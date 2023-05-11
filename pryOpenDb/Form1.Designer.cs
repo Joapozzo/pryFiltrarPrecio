@@ -73,7 +73,7 @@
             this.dgvMostrar.Name = "dgvMostrar";
             this.dgvMostrar.Size = new System.Drawing.Size(438, 150);
             this.dgvMostrar.TabIndex = 2;
-            this.dgvMostrar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.dgvMostrar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // lblFiltrar
             // 
@@ -123,7 +123,7 @@
             this.Controls.Add(this.btnConectar);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nupFiltrar)).EndInit();
             this.ResumeLayout(false);

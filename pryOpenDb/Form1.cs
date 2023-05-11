@@ -22,18 +22,10 @@ namespace pryOpenDb
         }
 
         OleDbConnection connection;
-        OleDbCommand command;
+        OleDbCommand command; // para darle ordenes
+        OleDbCommand commandGrupo;
         OleDbDataReader LectorDB;
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        OleDbDataReader LectorDBGrupo;
 
         private void btnConectar_Click(object sender, EventArgs e)
         {
@@ -53,15 +45,26 @@ namespace pryOpenDb
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            dgvMostrar.Rows.Clear();
             try
             {
                 float filtrar = Convert.ToSingle(nupFiltrar.Value);
+
+                // Lectura y command de la primer tabla
                 command = new OleDbCommand();
                 command.Connection = connection; // CONECTAR EL COMAND CON EL CONNECTION
                 command.CommandType = CommandType.TableDirect;
 
+                // Lectura y comman de la segunda tabla
+                commandGrupo = new OleDbCommand();
+                commandGrupo.Connection = connection;
+                commandGrupo.CommandType = CommandType.TableDirect;
+                
+
                 // tabla dentro del acces de verduleros, llamada productos
                 command.CommandText = "Productos";
+                commandGrupo.CommandText = "Grupos";
+                
 
                 LectorDB = command.ExecuteReader();
                 while (LectorDB.Read())
@@ -71,6 +74,7 @@ namespace pryOpenDb
                     {
                         dgvMostrar.Rows.Add(LectorDB[0], LectorDB[1], LectorDB[2], LectorDB[3]);
                     }
+
                 }
             }
             catch (Exception ex)
